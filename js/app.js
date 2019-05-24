@@ -57,6 +57,9 @@ evBtnAdd.addEventListener('click', () => {
 
   addFrom.style.display = "block";
   addFrom.style.animation = "showEl 0.3s cubic-bezier(0.21, 1.09, 1, 1)";
+
+
+
 });
 
 closeAddForm.addEventListener('click', () => {
@@ -64,4 +67,18 @@ closeAddForm.addEventListener('click', () => {
   setTimeout(() => {
     addFrom.style.display = "none";
   }, 500);
+});
+
+$(".flatpickr").flatpickr({
+  enableTime: true,
+  time_24hr: true,
+  altInput: true,
+  // weekNumbers: true,
+  minDate: "today",
+  dateFormat: "Y-m-d H:i",
+  altFormat: "M j, Y H:i",
+  // locale: "pl"
+  locale: {
+    firstDayOfWeek: 1
+  }
 });
