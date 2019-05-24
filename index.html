@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <title>Esport Manager</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <title>Esport Manager</title>
 </head>
+
 <body>
-    <section id="container">
-        <header class="appHeader">
-            <div class="appName">
-                <h1>coacht</h1>
-            </div>
-            <div class="userInfo">
-                <h1>Witaj, <br> Rafał!</h1>
-                <span></span>
-            </div>
-        </header>
+  <section id="container">
+    <header class="appHeader">
+      <div class="appName">
+        <h1>coacht</h1>
+      </div>
+      <div class="userInfo">
+        <h1>Witaj, <br> Rafał!</h1>
+        <span></span>
+      </div>
+    </header>
 
-        <section class="appContent">
-            <h2><i class="fas fa-calendar-day fa-lg "></i> UPCOMING EVENT:</h2>
-            <div id="upcomingEvent">
-                <p class="upEventTime">26 May - 15:30:</p>
-                <p class="upEventName">Scrim against Virtus Pro</p>
-            </div>
-            <div id="eventsList">
-                <h2><i class="fas fa-calendar-alt fa-lg"></i> ALL EVENTS:</h2>
-            </div>
-            <button id="addBtn" title="Add event">
-                <i class="fas fa-plus fa-2x"></i>
-            </button>
-        </section>
-        
-        <section id="addForm">
-            <h2>Add Event</h2>
+    <section class="appContent">
+      <h2><i class="fas fa-calendar-day fa-lg "></i> UPCOMING EVENT:</h2>
+      <div id="upcomingEvent">
+        <p class="upEventTime">26 May - 15:30:</p>
+        <p class="upEventName">Scrim against Virtus Pro</p>
+      </div>
+      <div id="eventsList">
+        <h2><i class="fas fa-calendar-alt fa-lg"></i> ALL EVENTS:</h2>
+      </div>
+      <button id="addBtn" title="Add event">
+        <i class="fas fa-plus fa-2x"></i>
+      </button>
+    </section>
 
-        </section>
+    <section id="addForm">
+      <header>
+        <h2>Add Event</h2>
+        <ion-icon class="closeAddForm" name="close" size="large"></ion-icon>
+      </header>
+
 
     </section>
 
-    <footer id="siteFooter">
-        <h1>coacht</h1>
-        <h3>Your esport team managment app</h3>
-    </footer>
+  </section>
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.9.0/d3.min.js"></script>
-    <script src="js/app.js"></script>
+  <footer id="siteFooter">
+    <h1>coacht</h1>
+    <h3>Your esport team managment app</h3>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.9.0/d3.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>
