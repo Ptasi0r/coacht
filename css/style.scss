@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Quicksand:400,700&display=swap&subset=latin-ext');
-@import url('_variable.sass');
+
 
 //var
 
 $absToTop: 40px; //absolute posiotion from top
-
+$primaryColor: #0b2781;
 
 * {
   margin: 0;
@@ -153,7 +153,7 @@ body {
 
     h2 {
       font-size: 1.5em;
-      color: #0b2781;
+      color: $primaryColor;
     }
   }
 }
@@ -165,7 +165,7 @@ ion-icon {
 @keyframes showEl {
   from {
     top: 500px;
-    opacity: 0.2;
+    opacity: 0.4;
   }
 
   to {
@@ -183,6 +183,6 @@ ion-icon {
 
   to {
     top: 700px;
-    opacity: 0;
+    opacity: 0.4;
   }
 }
