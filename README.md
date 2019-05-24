@@ -1,10 +1,10 @@
 # coacht
 ## App for manage esport team
 
-###TODO LIST
+### TODO LIST
 
-- [] Adding event
-- [] Main design
-- [] Load events from cache
-- [] Edit event
+- [ ] Adding event
+- [ ] Main design
+- [ ] Load events from cache
+- [ ] Edit event
 
