@@ -12,6 +12,7 @@
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
   <!-- <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script> -->
   <title>coacht</title>
 </head>
@@ -31,8 +32,16 @@
     <section class="appContent">
       <h2><i class="fas fa-calendar-day fa-lg "></i> UPCOMING EVENT:</h2>
       <div id="upcomingEvent">
-        <p class="upEventTime">26 May - 15:30:</p>
-        <p class="upEventName">Scrim against Virtus Pro</p>
+        <div class="eventContainer">
+          <div class="eventImg"><img src="img/scrim.png" alt=""></div>
+          <div class="eventInfo">
+            <p class="eventTime">26 May - 15:30</p>
+            <p class="eventName">Scrim against Virtus Pro</p>
+          </div>
+          <div class="eventBtn">
+            <ion-icon name="create"></ion-icon> edit
+          </div>
+        </div>
       </div>
       <div id="eventsList">
         <h2><i class="fas fa-calendar-alt fa-lg"></i> ALL EVENTS:</h2>
@@ -51,9 +60,10 @@
       <div class="addFormContainer">
         <div class="iconContainer">
           <!-- <ion-icon name="apps"></ion-icon> -->
-          <img src="img/question-mark.png" alt="" class="typeAddImg">
+          <img src="img/question-mark.png" alt="Event Type Icon" class="typeAddImg">
         </div>
-        <select name="addType" id="choice">
+        <div id="errorContainer"></div>
+        <select name="addType" class="addFormEl" id="choice">
           <option value="0" selected="selected" hidden>Type</option>
           <option value="match">Match</option>
           <option value="training">Training</option>
@@ -61,13 +71,16 @@
           <option value="media_day">Media day</option>
           <option value="others">Others</option>
         </select>
-        <input type="text" name="addName" placeholder="Name"><br>
-        <input type="text" class="flatpickr" name="addDate" placeholder="Date"><br>
-        <input type="text" name="addPlace" placeholder="Place"><br>
-        <input type="text" name="addDesc" placeholder="Describtion & comments" maxlength="150"> <br>
-        <input type="button" value="Add event">
+        <input type="text" class="addFormEl" name="addName" placeholder="Name"><br>
+        <input type="text" class="flatpickr addFormEl" name="addDate" placeholder="Date"><br>
+        <input type="text" class="addFormEl" name="addPlace" placeholder="Place"><br>
+        <input type="text" class="addFormEl" name="addDesc" placeholder="Describtion & comments" maxlength="150"> <br>
+        <input type="button" value="Add event" id="addFormBtn">
       </div>
 
+      <div id="added">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> &nbsp; ADDED
+      </div>
     </section>
 
   </section>

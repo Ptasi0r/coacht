@@ -106,14 +106,6 @@ body {
     font-size: 0.9em;
     margin-bottom: 20px;
     // text-transform: uppercase;
-
-    p {
-      display: inline;
-    }
-
-    p:first-of-type {
-      font-weight: bold;
-    }
   }
 
 }
@@ -219,7 +211,7 @@ body {
   text-align: center;
   line-height: 50px;
   border-radius: 40px;
-  border: 2px solid gray;
+  border: 1px solid gray;
   margin-bottom: 20px;
 
   // &:after {
@@ -244,6 +236,74 @@ ion-icon {
   cursor: pointer;
 }
 
+.eventContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.eventImg {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 40px;
+  border: 1px solid gray;
+}
+
+.eventInfo {
+  p:last-of-type {
+    font-weight: bold;
+  }
+}
+
+.eventBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $primaryColor;
+  cursor: pointer;
+
+  ion-icon {
+    margin-left: 5px;
+  }
+
+  &:hover {
+    color: lighten($primaryColor, 20)
+  }
+}
+
+.border {
+  padding: 10px 0;
+  border-bottom: 1px solid lighten($color: gray, $amount: 30);
+}
+
+#errorContainer {
+  color: red;
+  margin-bottom: -5px;
+}
+
+#added {
+  position: absolute;
+  bottom: -100px;
+  left: 35%;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.66);
+  padding: 5px;
+  width: 90px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+  background: linear-gradient(333deg, rgba(8, 149, 2, 1) 0%, rgba(40, 233, 32, 1) 100%);
+}
+
 @keyframes showEl {
   from {
     top: 500px;
@@ -265,6 +325,23 @@ ion-icon {
 
   to {
     top: 700px;
+    opacity: 0.4;
+  }
+}
+
+@keyframes notification {
+  0% {
+    bottom: -50px;
+    opacity: 0.4;
+  }
+
+  50% {
+    bottom: 150px;
+    opacity: 1;
+  }
+
+  100% {
+    bottom: -50px;
     opacity: 0.4;
   }
 }

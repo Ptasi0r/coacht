@@ -52,7 +52,15 @@ let evBtnAdd = document.getElementById("addBtn");
 let closeAddForm = document.getElementsByClassName("closeAddForm")[0];
 let typeForm = document.getElementById("choice");
 let typeAddImg = document.getElementsByClassName("typeAddImg")[0];
-
+let addFormBtn = document.getElementById("addFormBtn");
+let events = [];
+let Event = function (type, name, date, place, desc) {
+  this.type = type;
+  this.name = name;
+  this.date = date;
+  this.place = place;
+  this.desc = desc;
+};
 
 evBtnAdd.addEventListener('click', () => {
   // evBtn.style.display="none";
@@ -74,6 +82,71 @@ closeAddForm.addEventListener('click', () => {
     addFrom.style.display = "none";
   }, 500);
 });
+
+addFormBtn.addEventListener('click', () => {
+  document.getElementById('errorContainer').innerHTML = "";
+  let inputs = document.querySelectorAll(".addFormEl:not(.input)");
+  console.log(inputs);
+
+  try {
+    for (let i = 0; i < inputs.length; i++) {
+      const input = inputs[i];
+      if (!input.value || input.value == "") {
+        throw "All fields must be filled!";
+      }
+    }
+
+    let newEvent = new Event(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);
+    console.log(newEvent)
+
+    events.push(newEvent);
+    addEventDOM(newEvent);
+    document.getElementById("added").style.animation = "notification 4s cubic-bezier(0.21, 1.09, 1, 1)";
+    setTimeout(() => {
+      addFrom.style.animation = "hideEl 0.5s cubic-bezier(0.21, 1.09, 1, 1)";
+      document.getElementById("added").style.animation = "";
+      setTimeout(() => {
+        addFrom.style.display = "none";
+      }, 500);
+    }, 4000)
+  } catch (error) {
+    document.getElementById('errorContainer').innerHTML = error;
+  }
+});
+
+function addEventDOM(event) {
+  let container = document.createElement("div");
+  container.className = "eventContainer border";
+
+  let divImg = document.createElement("div");
+  divImg.className = "eventImg"
+  img = document.createElement("img");
+  img.setAttribute('src', 'img/' + event.type + ".png");
+  divImg.appendChild(img);
+  container.appendChild(divImg);
+
+  let divInfo = document.createElement("div");
+  divInfo.className = "eventInfo";
+  let date = document.createElement("p");
+  date.className = "eventTime";
+  date.innerHTML = moment(event.date).format("MMM DD, YYYY - HH:mm");
+  divInfo.appendChild(date);
+  let info = document.createElement("p");
+  info.className = "eventName";
+  info.innerHTML = event.name;
+  divInfo.appendChild(info);
+  container.appendChild(divInfo);
+
+  let edit = document.createElement("div");
+  edit.classList = "eventBtn";
+  edit.innerHTML = "<ion-icon name='create'></ion-icon> edit";
+  container.appendChild(edit);
+
+  document.getElementById("eventsList").appendChild(container);
+}
+
+
+
 
 $(".flatpickr").flatpickr({
   enableTime: true,

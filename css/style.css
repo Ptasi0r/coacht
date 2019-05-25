@@ -122,14 +122,6 @@ body {
   margin-bottom: 20px;
 }
 
-.appContent #upcomingEvent p {
-  display: inline;
-}
-
-.appContent #upcomingEvent p:first-of-type {
-  font-weight: bold;
-}
-
 #addBtn {
   outline: none;
   cursor: pointer;
@@ -258,7 +250,7 @@ body {
   text-align: center;
   line-height: 50px;
   border-radius: 40px;
-  border: 2px solid gray;
+  border: 1px solid gray;
   margin-bottom: 20px;
 }
 
@@ -268,6 +260,100 @@ body {
 
 ion-icon {
   cursor: pointer;
+}
+
+.eventContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+}
+
+.eventImg {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 40px;
+  border: 1px solid gray;
+}
+
+.eventInfo p:last-of-type {
+  font-weight: bold;
+}
+
+.eventBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0b2781;
+  cursor: pointer;
+}
+
+.eventBtn ion-icon {
+  margin-left: 5px;
+}
+
+.eventBtn:hover {
+  color: #1343df;
+}
+
+.border {
+  padding: 10px 0;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+#errorContainer {
+  color: red;
+  margin-bottom: -5px;
+}
+
+#added {
+  position: absolute;
+  bottom: -100px;
+  left: 35%;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.66);
+          box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.66);
+  padding: 5px;
+  width: 90px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  color: white;
+  background: linear-gradient(333deg, #089502 0%, #28e920 100%);
 }
 
 @-webkit-keyframes showEl {
@@ -310,6 +396,36 @@ ion-icon {
   }
   to {
     top: 700px;
+    opacity: 0.4;
+  }
+}
+
+@-webkit-keyframes notification {
+  0% {
+    bottom: -50px;
+    opacity: 0.4;
+  }
+  50% {
+    bottom: 150px;
+    opacity: 1;
+  }
+  100% {
+    bottom: -50px;
+    opacity: 0.4;
+  }
+}
+
+@keyframes notification {
+  0% {
+    bottom: -50px;
+    opacity: 0.4;
+  }
+  50% {
+    bottom: 150px;
+    opacity: 1;
+  }
+  100% {
+    bottom: -50px;
     opacity: 0.4;
   }
 }
