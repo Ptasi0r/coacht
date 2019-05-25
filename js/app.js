@@ -98,20 +98,17 @@ addFormBtn.addEventListener('click', () => {
       }
     }
 
-    if (events.length > 4) {
-      document.getElementById("eventsList").style.overflowY = "scroll";
+    if (events != null) {
+      if (events.length > 4) {
+        document.getElementById("eventsList").style.overflowY = "scroll";
+      }
     }
 
-
-    let newEvent = new Event(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);
-    // console.log(newEvent)
-
+    let newEvent = new Event(inputs[0].value, inputs[2].value, inputs[1].value, inputs[3].value, inputs[4].value);
     events.push(newEvent);
-    addEventDOM(newEvent);
-    localStorage.setItem("eventsList", JSON.stringify(events));
-    // console.log(JSON.parse(localStorage.getItem("eventsList")))
     events.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
-    console.log(events);
+    localStorage.setItem("eventsList", JSON.stringify(events));
+    refreshEventsList();
 
     document.getElementById("added").style.animation = "notification 4s cubic-bezier(0.21, 1.09, 1, 1)";
     setTimeout(() => {
@@ -158,18 +155,103 @@ function addEventDOM(event) {
   document.getElementById("eventsList").appendChild(container);
 }
 
+function refreshUpcomingEvent(event) {
+  let cont = document.getElementById("upcomingEvent")
+  while (cont.firstChild) {
+    cont.removeChild(cont.firstChild);
+  }
+  let container = document.createElement("div");
+  container.className = "eventContainer";
+
+  let divImg = document.createElement("div");
+  divImg.className = "eventImg"
+  img = document.createElement("img");
+  img.setAttribute('src', 'img/' + event.type + ".png");
+  divImg.appendChild(img);
+  container.appendChild(divImg);
+
+  let divInfo = document.createElement("div");
+  divInfo.className = "eventInfo";
+  let date = document.createElement("p");
+  date.className = "eventTime";
+  if (moment(event.date).format("YYYY") > "2019") date.innerHTML = moment(event.date).format("DD MMM, YYYY - HH:mm");
+  else date.innerHTML = moment(event.date).format("DD MMM - HH:mm");
+  divInfo.appendChild(date);
+  let info = document.createElement("p");
+  info.className = "eventName";
+  info.innerHTML = event.name;
+  divInfo.appendChild(info);
+  container.appendChild(divInfo);
+
+  let edit = document.createElement("div");
+  edit.classList = "eventBtn";
+  edit.innerHTML = "<ion-icon name='create'></ion-icon> edit";
+  container.appendChild(edit);
+
+  document.getElementById("upcomingEvent").appendChild(container);
+}
+
 function loadEventFromLS() {
   events = JSON.parse(localStorage.getItem("eventsList"));
-  if (events.length == 0) {
 
+  if (events == null) {
+    noEvents(0);
+    noUpcomingEvent();
+    events = []
+    return;
   } else {
-    for (i = 0; i < events.length; i++) {
+    events.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
+    if (events.length == 1) {
+      noEvents(1)
+    }
+    refreshUpcomingEvent(events[0]);
+    for (i = 1; i < events.length; i++) {
       //posortowane wyżej 1 do upcomming a reszta niżej jeżeli nie ma to wiadomość tu i tu
       addEventDOM(events[i]);
     }
   }
 }
 
+function refreshEventsList() {
+  let container = document.getElementById("eventsList");
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+  if (events.length == 1) {
+    noEvents(1);
+  }
+  refreshUpcomingEvent(events[0]);
+  if (events.length > 1) {
+    for (i = 1; i < events.length; i++) {
+      addEventDOM(events[i]);
+    }
+  }
+}
+
+function noUpcomingEvent() {
+  let p = document.createElement('p');
+  p.innerHTML = "You don't have any upcoming event.";
+  p.style.textAlign = "center";
+  p.style.marginTop = "10px";
+  document.getElementById("upcomingEvent").appendChild(p);
+}
+
+function noEvents(lenght) {
+  let info = document.createElement('p');
+  info.style.textAlign = "center";
+  info.style.marginTop = "10px";
+  info.style.fontSize = "14.4px";
+  switch (lenght) {
+    case 1:
+      info.innerHTML = "You have ony one upcoming event.";
+      break;
+
+    default:
+      info.innerHTML = "You don't have any events.";
+      break;
+  }
+  document.getElementById("eventsList").appendChild(info);
+}
 
 
 $(".flatpickr").flatpickr({

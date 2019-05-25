@@ -120,6 +120,7 @@ body {
 .appContent #upcomingEvent {
   font-size: 0.9em;
   margin-bottom: 20px;
+  min-height: 52px;
 }
 
 #addBtn {
