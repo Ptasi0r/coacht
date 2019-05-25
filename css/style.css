@@ -202,6 +202,7 @@ body {
   border: none;
   padding: 15px 0;
   width: 94%;
+  margin-top: 20px;
   border-radius: 5px;
   cursor: pointer;
   color: white;
@@ -332,6 +333,10 @@ ion-icon {
   border-bottom: 1px solid #cdcdcd;
 }
 
+.border:last-of-type {
+  border: none;
+}
+
 #errorContainer {
   color: red;
   margin-bottom: -5px;
@@ -358,6 +363,32 @@ ion-icon {
   margin: 0 auto;
   color: white;
   background: linear-gradient(333deg, #089502 0%, #28e920 100%);
+}
+
+.eventsListContainer {
+  height: 370px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+#eventsList {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+#eventsList::-webkit-scrollbar {
+  background: transparent;
+  width: 5px;
+}
+
+#eventsList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#eventsList::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.856);
+  height: 30%;
+  border-radius: 5px;
 }
 
 @-webkit-keyframes showEl {
@@ -410,7 +441,7 @@ ion-icon {
     opacity: 0.4;
   }
   50% {
-    bottom: 120px;
+    bottom: 60px;
     opacity: 1;
   }
   100% {
@@ -425,7 +456,7 @@ ion-icon {
     opacity: 0.4;
   }
   50% {
-    bottom: 120px;
+    bottom: 60px;
     opacity: 1;
   }
   100% {

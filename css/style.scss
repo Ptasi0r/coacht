@@ -181,6 +181,7 @@ body {
     border: none;
     padding: 15px 0;
     width: 94%;
+    margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
     color: white;
@@ -283,6 +284,10 @@ ion-icon {
 .border {
   padding: 10px 0;
   border-bottom: 1px solid lighten($color: gray, $amount: 30);
+
+  &:last-of-type {
+    border: none;
+  }
 }
 
 #errorContainer {
@@ -305,6 +310,37 @@ ion-icon {
   color: white;
   background: linear-gradient(333deg, rgba(8, 149, 2, 1) 0%, rgba(40, 233, 32, 1) 100%);
 }
+
+.eventsListContainer {
+  height: 370px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+#eventsList {
+  height: 350px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 5px;
+
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.856);
+    height: 30%;
+    border-radius: 5px;
+  }
+
+}
+
+
+
 
 @keyframes showEl {
   from {
@@ -338,7 +374,7 @@ ion-icon {
   }
 
   50% {
-    bottom: 120px;
+    bottom: 60px;
     opacity: 1;
   }
 

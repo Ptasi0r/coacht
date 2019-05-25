@@ -96,6 +96,11 @@ addFormBtn.addEventListener('click', () => {
       }
     }
 
+    if (events.length > 4) {
+      document.getElementById("eventsList").style.overflowY = "scroll";
+    }
+
+
     let newEvent = new Event(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);
     console.log(newEvent)
 
