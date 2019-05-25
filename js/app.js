@@ -1,9 +1,18 @@
+let addFrom = document.getElementById("addForm");
+let evBtnAdd = document.getElementById("addBtn");
+let closeAddForm = document.getElementsByClassName("closeAddForm")[0];
+let typeForm = document.getElementById("choice");
+let typeAddImg = document.getElementsByClassName("typeAddImg")[0];
+let addFormBtn = document.getElementById("addFormBtn");
+let events = [];
+
+
 window.addEventListener('DOMContentLoaded', () => {
   let dataContainer = document.querySelector(".userInfo span");
   let date = new Date();
   let dateConv = month(date.getMonth()) + " " + date.getDate() + ", " + date.getFullYear();
-
   dataContainer.innerHTML = dateConv;
+  loadEventFromLS();
 });
 
 function month(month) {
@@ -47,13 +56,6 @@ function month(month) {
   }
 }
 
-let addFrom = document.getElementById("addForm");
-let evBtnAdd = document.getElementById("addBtn");
-let closeAddForm = document.getElementsByClassName("closeAddForm")[0];
-let typeForm = document.getElementById("choice");
-let typeAddImg = document.getElementsByClassName("typeAddImg")[0];
-let addFormBtn = document.getElementById("addFormBtn");
-let events = [];
 let Event = function (type, name, date, place, desc) {
   this.type = type;
   this.name = name;
@@ -102,10 +104,15 @@ addFormBtn.addEventListener('click', () => {
 
 
     let newEvent = new Event(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);
-    console.log(newEvent)
+    // console.log(newEvent)
 
     events.push(newEvent);
     addEventDOM(newEvent);
+    localStorage.setItem("eventsList", JSON.stringify(events));
+    // console.log(JSON.parse(localStorage.getItem("eventsList")))
+    events.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
+    console.log(events);
+
     document.getElementById("added").style.animation = "notification 4s cubic-bezier(0.21, 1.09, 1, 1)";
     setTimeout(() => {
       addFrom.style.animation = "hideEl 0.5s cubic-bezier(0.21, 1.09, 1, 1)";
@@ -151,6 +158,17 @@ function addEventDOM(event) {
   document.getElementById("eventsList").appendChild(container);
 }
 
+function loadEventFromLS() {
+  events = JSON.parse(localStorage.getItem("eventsList"));
+  if (events.length == 0) {
+
+  } else {
+    for (i = 0; i < events.length; i++) {
+      //posortowane wyżej 1 do upcomming a reszta niżej jeżeli nie ma to wiadomość tu i tu
+      addEventDOM(events[i]);
+    }
+  }
+}
 
 
 
