@@ -129,7 +129,8 @@ function addEventDOM(event) {
   divInfo.className = "eventInfo";
   let date = document.createElement("p");
   date.className = "eventTime";
-  date.innerHTML = moment(event.date).format("MMM DD, YYYY - HH:mm");
+  if (moment(event.date).format("YYYY") > "2019") date.innerHTML = moment(event.date).format("DD MMM, YYYY - HH:mm");
+  else date.innerHTML = moment(event.date).format("DD MMM - HH:mm");
   divInfo.appendChild(date);
   let info = document.createElement("p");
   info.className = "eventName";
