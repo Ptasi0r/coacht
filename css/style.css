@@ -173,8 +173,97 @@ body {
 }
 
 #addForm header h2 {
-  font-size: 1.5em;
+  font-size: 1.1em;
   color: #0b2781;
+}
+
+#addForm input,
+#addForm select {
+  border: none;
+  border-bottom: 2px solid gray;
+  margin: 10px;
+  padding: 5px;
+  outline: none;
+  width: 90%;
+}
+
+#addForm input:focus,
+#addForm select:focus {
+  border-bottom: 2px solid #0b2781;
+}
+
+#addForm select {
+  width: 93%;
+  padding: 5px 0;
+  margin: 20px;
+}
+
+#addForm #choice option {
+  color: black;
+}
+
+#addForm .empty {
+  color: gray;
+}
+
+#addForm input[type="button"] {
+  border: none;
+  padding: 15px 0;
+  width: 94%;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(171deg, #4870f0 0%, #1e3cdf 94%);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.addFormContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+}
+
+.iconContainer {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 40px;
+  border: 2px solid gray;
+  margin-bottom: 20px;
+}
+
+.iconContainer ion-icon {
+  font-size: 45px;
 }
 
 ion-icon {

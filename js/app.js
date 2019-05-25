@@ -50,6 +50,9 @@ function month(month) {
 let addFrom = document.getElementById("addForm");
 let evBtnAdd = document.getElementById("addBtn");
 let closeAddForm = document.getElementsByClassName("closeAddForm")[0];
+let typeForm = document.getElementById("choice");
+let typeAddImg = document.getElementsByClassName("typeAddImg")[0];
+
 
 evBtnAdd.addEventListener('click', () => {
   // evBtn.style.display="none";
@@ -57,10 +60,13 @@ evBtnAdd.addEventListener('click', () => {
 
   addFrom.style.display = "block";
   addFrom.style.animation = "showEl 0.3s cubic-bezier(0.21, 1.09, 1, 1)";
-
-
-
 });
+
+typeForm.addEventListener('change', () => {
+  if (typeForm.value) {
+    typeAddImg.setAttribute('src', 'img/' + typeForm.value + ".png");
+  }
+})
 
 closeAddForm.addEventListener('click', () => {
   addFrom.style.animation = "hideEl 0.5s cubic-bezier(0.21, 1.09, 1, 1)";
@@ -82,3 +88,11 @@ $(".flatpickr").flatpickr({
     firstDayOfWeek: 1
   }
 });
+
+
+
+$("#choice").change(function () {
+  if ($(this).val() == "0") $(this).addClass("empty");
+  else $(this).removeClass("empty")
+});
+$("#choice").change();
