@@ -140,6 +140,7 @@ body {
   padding: 10px;
   background-color: white;
   border-radius: 30px 30px 0px 0px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.66);
   display: none;
 
   header {
@@ -278,22 +279,6 @@ ion-icon {
   }
 }
 
-// .eventContainer:hover .eventDescription {
-//   display: block;
-// }
-
-// .eventDescription {
-//   padding: 5px;
-//   width: 95%;
-//   position: absolute;
-//   word-wrap: break-word;
-//   bottom: -20px;
-//   left: 0;
-//   z-index: 5;
-//   background-color: white;
-//   display: none;
-//   border: 1px solid gray;
-// }
 
 .eventBtn {
   display: flex;
@@ -387,6 +372,20 @@ ion-icon {
 
 }
 
+#eventShow {
+  position: absolute;
+  top: calc(100% - 300px);
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(100% - #{$absToTop});
+  padding: 10px;
+  background-color: white;
+  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.66);
+  display: none;
+}
 
 
 

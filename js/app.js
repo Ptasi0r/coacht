@@ -134,6 +134,7 @@ function addEventDOM(event, index) {
   img = document.createElement("img");
   img.setAttribute('src', 'img/' + event.type + ".png");
   divImg.appendChild(img);
+  divImg.setAttribute("onClick", "showEvent(0)");
   infoContainer.appendChild(divImg);
 
   let divInfo = document.createElement("div");
@@ -146,6 +147,7 @@ function addEventDOM(event, index) {
   let info = document.createElement("p");
   info.className = "eventName";
   info.innerHTML = event.name;
+  divInfo.setAttribute("onClick", "showEvent(0)");
   divInfo.appendChild(info);
   infoContainer.appendChild(divInfo);
 
@@ -180,6 +182,7 @@ function refreshUpcomingEvent(event) {
   divImg.className = "eventImg"
   img = document.createElement("img");
   img.setAttribute('src', 'img/' + event.type + ".png");
+  divImg.setAttribute("onClick", "showEvent(0)");
   divImg.appendChild(img);
   infoContainer.appendChild(divImg);
 
@@ -194,6 +197,7 @@ function refreshUpcomingEvent(event) {
   info.className = "eventName";
   info.innerHTML = event.name;
   divInfo.appendChild(info);
+  divInfo.setAttribute("onClick", "showEvent(0)");
   infoContainer.appendChild(divInfo);
 
   let edit = document.createElement("div");
@@ -212,18 +216,9 @@ function refreshUpcomingEvent(event) {
   document.getElementById("upcomingEvent").appendChild(container);
 }
 
-// document.getElementsByClassName("deleteElement")[0].addEventListener('click', function removeEl() {
-//   let deleteEv = confirm("Confirm delete event");
-//   console.log(deleteEv)
-//   if (deleteEv == true) {
-//     if (index == 0) events.shift();
-//     if (index > 1) events.splice(index, 1);
-//   }
-//   events.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
-//   localStorage.setItem("eventsList", JSON.stringify(events));
-//   document.getElementsByClassName("deleteElement")[0].removeEventListener('click', removeEl());
-//   if (events.length > 0) refreshEventsList();
-// })
+function showEvent(index) {
+  console.log(index);
+}
 
 function editEvent(index) {
   let editForm = document.getElementById("editForm");
@@ -237,7 +232,7 @@ function editEvent(index) {
     if (events.length == 2) {
       events.pop();
     }
-    if (index > 1) events.splice(index, 1);
+    if (index >= 1) events.splice(index, 1);
     events.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
     if (events.length == 0) {
       localStorage.setItem("eventsList", null);

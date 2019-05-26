@@ -4,6 +4,5 @@
 ### TODO LIST
 
 - [ ] Main design
-- [ ] Edit event
 - [ ] App footer
 - [ ] Events preview
