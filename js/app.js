@@ -234,13 +234,16 @@ function editEvent(index) {
 
   document.getElementsByClassName("deleteElement")[0].addEventListener('click', function _removeEl() {
     if (index == 0) events.shift();
+    if (events.length == 2) {
+      events.pop();
+    }
     if (index > 1) events.splice(index, 1);
     events.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
-    refreshEventsList();
     if (events.length == 0) {
       localStorage.setItem("eventsList", null);
       location.reload();
     } else localStorage.setItem("eventsList", JSON.stringify(events));
+    refreshEventsList();
     document.getElementsByClassName("deleteElement")[0].removeEventListener('click', _removeEl)
   })
 
