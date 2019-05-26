@@ -66,14 +66,46 @@
           <option value="others">Others</option>
         </select>
         <input type="text" class="flatpickr addFormEl" name="addDate" placeholder="Date"><br>
-        <input type="text" class="addFormEl" name="addName" placeholder="Name" maxlength="24"><br>
+        <input type="text" class="addFormEl" name="addName" placeholder="Name" maxlength="22"><br>
         <input type="text" class="addFormEl" name="addPlace" placeholder="Place"><br>
         <input type="text" class="addFormEl" name="addDesc" placeholder="Describtion & comments" maxlength="150"> <br>
         <input type="button" value="Add event" id="addFormBtn">
       </div>
 
-      <div id="added">
+      <div id="added" class="added">
         <ion-icon name="checkmark-circle-outline"></ion-icon> &nbsp; ADDED
+      </div>
+    </section>
+
+    <section id="editForm">
+      <header>
+        <ion-icon class="closeAddForm" name="close" size="large"></ion-icon>
+        <h2>Edit event</h2>
+        <ion-icon class="deleteElement" name="trash" size="large"></ion-icon>
+      </header>
+      <div class="addFormContainer">
+        <div class="iconContainer">
+          <!-- <ion-icon name="apps"></ion-icon> -->
+          <img src="img/question-mark.png" alt="Event Type Icon" class="typeAddImg">
+        </div>
+        <div id="errorEditContainer"></div>
+        <select name="addType" class="editFormEl" id="choice">
+          <option value="0" selected="selected" hidden>Type</option>
+          <option value="match">Match</option>
+          <option value="training">Training</option>
+          <option value="scrim">Scrim</option>
+          <option value="media_day">Media day</option>
+          <option value="others">Others</option>
+        </select>
+        <input type="text" class="flatpickr editFormEl" name="editDate" placeholder="Date"><br>
+        <input type="text" class="editFormEl" name="editName" placeholder="Name" maxlength="22"><br>
+        <input type="text" class="editFormEl" name="editPlace" placeholder="Place"><br>
+        <input type="text" class="editFormEl" name="editDesc" placeholder="Describtion & comments" maxlength="150"> <br>
+        <input type="button" value="Add event" id="editFormBtn">
+      </div>
+
+      <div id="saved" class="added">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> &nbsp; SAVED
       </div>
     </section>
 

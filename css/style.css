@@ -109,7 +109,7 @@ body {
 .appContent {
   position: relative;
   min-height: 450px;
-  padding: 10px;
+  padding: 15px 10px;
 }
 
 .appContent h2 {
@@ -118,9 +118,10 @@ body {
 }
 
 .appContent #upcomingEvent {
+  width: 98%;
   font-size: 0.9em;
   margin-bottom: 20px;
-  min-height: 52px;
+  height: 60px;
 }
 
 #addBtn {
@@ -138,7 +139,8 @@ body {
   background: linear-gradient(171deg, #7082f6 0%, #4870f0 50%, #1e3cdf 94%);
 }
 
-#addForm {
+#addForm,
+#editForm {
   position: absolute;
   top: 40px;
   left: 0;
@@ -153,7 +155,8 @@ body {
   display: none;
 }
 
-#addForm header {
+#addForm header,
+#editForm header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -165,13 +168,16 @@ body {
           align-items: center;
 }
 
-#addForm header h2 {
+#addForm header h2,
+#editForm header h2 {
   font-size: 1.1em;
   color: #0b2781;
 }
 
 #addForm input,
-#addForm select {
+#addForm select,
+#editForm input,
+#editForm select {
   border: none;
   border-bottom: 2px solid gray;
   margin: 10px;
@@ -181,25 +187,31 @@ body {
 }
 
 #addForm input:focus,
-#addForm select:focus {
+#addForm select:focus,
+#editForm input:focus,
+#editForm select:focus {
   border-bottom: 2px solid #0b2781;
 }
 
-#addForm select {
+#addForm select,
+#editForm select {
   width: 93%;
   padding: 5px 0;
   margin: 20px;
 }
 
-#addForm #choice option {
+#addForm #choice option,
+#editForm #choice option {
   color: black;
 }
 
-#addForm .empty {
+#addForm .empty,
+#editForm .empty {
   color: gray;
 }
 
-#addForm input[type="button"] {
+#addForm input[type="button"],
+#editForm input[type="button"] {
   border: none;
   padding: 15px 0;
   width: 94%;
@@ -264,6 +276,24 @@ ion-icon {
 }
 
 .eventContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.eventInfoContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -273,7 +303,7 @@ ion-icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px;
+  width: 96%;
 }
 
 .eventImg {
@@ -300,7 +330,7 @@ ion-icon {
 
 .eventInfo {
   font-size: 14px;
-  min-width: 170px;
+  min-width: 190px;
 }
 
 .eventInfo p:last-of-type {
@@ -319,6 +349,7 @@ ion-icon {
           align-items: center;
   color: #0b2781;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .eventBtn ion-icon {
@@ -327,6 +358,10 @@ ion-icon {
 
 .eventBtn:hover {
   color: #1343df;
+}
+
+.eventBtn:first-of-type {
+  margin-right: 10px;
 }
 
 .border {
@@ -343,7 +378,7 @@ ion-icon {
   margin-bottom: -5px;
 }
 
-#added {
+.added {
   position: absolute;
   bottom: -100px;
   left: 35%;
@@ -370,6 +405,18 @@ ion-icon {
   height: 370px;
   overflow: hidden;
   margin-bottom: 40px;
+}
+
+.closeAddForm:hover {
+  color: #474747;
+}
+
+.deleteElement {
+  color: #df3030;
+}
+
+.deleteElement:hover {
+  color: rgba(223, 48, 48, 0.911);
 }
 
 #eventsList {
