@@ -1,3 +1,5 @@
+/* (c) Kamil Schiewe, Marcin Ptok 3TI */
+
 let addFrom = document.getElementById("addForm");
 let evBtnAdd = document.getElementById("addBtn");
 let closeAddForm = document.getElementsByClassName("closeAddForm")[0];
@@ -67,8 +69,15 @@ let Event = function (type, name, date, place, desc) {
 evBtnAdd.addEventListener('click', () => {
   // evBtn.style.display="none";
   // let container = document.getElementById("container");
-
+  
   addFrom.style.display = "block";
+  let inputs = document.querySelectorAll(".addFormEl");
+  typeAddImg.setAttribute('src', 'img/question-mark.png');
+  inputs[0].value = 0;
+  inputs[0].firstChild.selected = true;
+  for (let i = 1; i < inputs.length; i++) {
+    inputs[i].value = "";
+  }
   addFrom.style.animation = "showEl 0.3s cubic-bezier(0.21, 1.09, 1, 1)";
 });
 
@@ -134,7 +143,7 @@ function addEventDOM(event, index) {
   img = document.createElement("img");
   img.setAttribute('src', 'img/' + event.type + ".png");
   divImg.appendChild(img);
-  divImg.setAttribute("onClick", "showEvent(0)");
+  divImg.setAttribute("onClick", "showEvent(" + index + ")");
   infoContainer.appendChild(divImg);
 
   let divInfo = document.createElement("div");
@@ -147,7 +156,7 @@ function addEventDOM(event, index) {
   let info = document.createElement("p");
   info.className = "eventName";
   info.innerHTML = event.name;
-  divInfo.setAttribute("onClick", "showEvent(0)");
+  divInfo.setAttribute("onClick", "showEvent(" + index + ")");
   divInfo.appendChild(info);
   infoContainer.appendChild(divInfo);
 
@@ -217,7 +226,23 @@ function refreshUpcomingEvent(event) {
 }
 
 function showEvent(index) {
-  console.log(index);
+  document.getElementsByClassName("showEventImg")[0].setAttribute('src', 'img/' + events[index].type + ".png");
+  document.getElementsByClassName("showEventName")[0].textContent =  events[index].name;
+  document.getElementsByClassName("showEventDate")[0].innerHTML = "<strong>Date: </strong>" + moment(events[index].date).format("DD MMM - HH:mm");
+  document.getElementsByClassName("showEventPlace")[0].innerHTML = "<strong>Place: </strong>" + events[index].place;
+  document.getElementsByClassName("showEventDesc")[0].innerHTML = "<strong>Description: </strong>" + events[index].desc;
+
+  let eventShow = document.getElementById("eventShow");
+  eventShow.style.display = "block";
+  eventShow.style.animation = "showElPre 0.3s cubic-bezier(0.21, 1.09, 1, 1)";
+   
+  document.getElementsByClassName("closeEventShow")[0].addEventListener('click', function _hide(){
+    eventShow.style.animation = "hideElPre 0.5s cubic-bezier(0.21, 1.09, 1, 1)";
+    setTimeout(() => {
+      eventShow.style.display = "none";
+      document.getElementsByClassName("closeEventShow")[0].removeEventListener('click', _hide);
+    }, 500);
+  });
 }
 
 function editEvent(index) {
@@ -229,7 +254,7 @@ function editEvent(index) {
 
   document.getElementsByClassName("deleteElement")[0].addEventListener('click', function _removeEl() {
     if (index == 0) events.shift();
-    if (events.length == 2) {
+    if (events.length == 2 && index==1) {
       events.pop();
     }
     if (index >= 1) events.splice(index, 1);
@@ -239,9 +264,18 @@ function editEvent(index) {
       location.reload();
     } else localStorage.setItem("eventsList", JSON.stringify(events));
     refreshEventsList();
+    document.getElementById("editForm").style.animation = "hideEl 0.5s cubic-bezier(0.21, 1.09, 1, 1)";
+    setTimeout(() => {
+        document.getElementById("editForm").style.display = "none"
+    }, 500);
     document.getElementsByClassName("deleteElement")[0].removeEventListener('click', _removeEl)
   })
 
+  document.getElementsByClassName("editChoise")[0].addEventListener('change', () => {
+    if (document.getElementsByClassName("editChoise")[0].value) {
+      document.getElementsByClassName("typeEditImg")[0].setAttribute('src', 'img/' + document.getElementsByClassName("editChoise")[0].value + ".png");
+    }
+  })
 
   document.getElementById("editFormBtn").addEventListener('click', () => {
     document.getElementById('errorEditContainer').innerHTML = "";
@@ -291,7 +325,7 @@ function getDataFromEvent(event) {
   let inputs = document.querySelectorAll(".editFormEl");
   // console.log(inputs);
   inputs[0].value = event.type;
-  document.getElementsByClassName("typeAddImg")[1].setAttribute('src', 'img/' + event.type + ".png");
+  document.getElementsByClassName("typeEditImg")[0].setAttribute('src', 'img/' + event.type + ".png");
   inputs[1].value = event.date;
   inputs[2].value = event.date;
   inputs[3].value = event.name;

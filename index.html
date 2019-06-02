@@ -24,7 +24,7 @@
         <h1>coacht</h1>
       </div>
       <div class="userInfo">
-        <h1>Hello, <br> Rafał!</h1>
+        <h1>Hello, <br> David!</h1>
         <span></span>
       </div>
     </header>
@@ -86,10 +86,10 @@
       <div class="addFormContainer">
         <div class="iconContainer">
           <!-- <ion-icon name="apps"></ion-icon> -->
-          <img src="img/question-mark.png" alt="Event Type Icon" class="typeAddImg">
+          <img src="img/question-mark.png" alt="Event Type Icon" class="typeEditImg">
         </div>
         <div id="errorEditContainer"></div>
-        <select name="addType" class="editFormEl" id="choice">
+        <select name="addType" class="editFormEl editChoise" id="choice">
           <option value="0" selected="selected" hidden>Type</option>
           <option value="match">Match</option>
           <option value="training">Training</option>
@@ -101,7 +101,7 @@
         <input type="text" class="editFormEl" name="editName" placeholder="Name" maxlength="22"><br>
         <input type="text" class="editFormEl" name="editPlace" placeholder="Place"><br>
         <input type="text" class="editFormEl" name="editDesc" placeholder="Describtion & comments" maxlength="150"> <br>
-        <input type="button" value="Add event" id="editFormBtn">
+        <input type="button" value="Save event" id="editFormBtn">
       </div>
 
       <div id="saved" class="added">
@@ -110,13 +110,19 @@
     </section>
 
     <section id="eventShow">
+      <header>
+        <ion-icon class="closeEventShow" name="close" size="large"></ion-icon>
+        <h2>Event preview</h2>
+        <ion-icon class="closeEventShow" name="close" size="large" style="visibility: hidden"></ion-icon>
+      </header>
       <div class="eventShowHeader">
-        <div class="eventImg"><img src="img/scrim.png" alt=""></div>
-        <p class="eventName">Scrim against Virtus Pro</p>
+        <div class="eventImg"><img src="img/scrim.png" alt="" class="showEventImg"></div>
+        <p class="showEventName">Scrim against Virtus Pro</p>
       </div>
-      <div class="eventInfo">
-        <p class="eventTime">26 May - 15:30</p>
-
+      <div class="showEventInfo">
+        <p class="showEventDate">26 May - 15:30</p>
+        <p class="showEventPlace">26 May - 15:30</p>
+        <p class="showEventDesc">26 May - 15:30</p>
       </div>
     </section>
   </section>
